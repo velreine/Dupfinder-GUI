@@ -177,7 +177,7 @@
             // checkBox10
             // 
             this.checkBox10.AutoSize = true;
-            this.checkBox10.Location = new System.Drawing.Point(139, 253);
+            this.checkBox10.Location = new System.Drawing.Point(155, 253);
             this.checkBox10.Name = "checkBox10";
             this.checkBox10.Size = new System.Drawing.Size(88, 21);
             this.checkBox10.TabIndex = 20;
@@ -187,7 +187,7 @@
             // checkBox11
             // 
             this.checkBox11.AutoSize = true;
-            this.checkBox11.Location = new System.Drawing.Point(139, 226);
+            this.checkBox11.Location = new System.Drawing.Point(155, 226);
             this.checkBox11.Name = "checkBox11";
             this.checkBox11.Size = new System.Drawing.Size(117, 21);
             this.checkBox11.TabIndex = 19;
@@ -197,7 +197,7 @@
             // checkBox12
             // 
             this.checkBox12.AutoSize = true;
-            this.checkBox12.Location = new System.Drawing.Point(139, 199);
+            this.checkBox12.Location = new System.Drawing.Point(155, 199);
             this.checkBox12.Name = "checkBox12";
             this.checkBox12.Size = new System.Drawing.Size(86, 21);
             this.checkBox12.TabIndex = 18;
@@ -207,7 +207,7 @@
             // checkBox13
             // 
             this.checkBox13.AutoSize = true;
-            this.checkBox13.Location = new System.Drawing.Point(139, 172);
+            this.checkBox13.Location = new System.Drawing.Point(155, 172);
             this.checkBox13.Name = "checkBox13";
             this.checkBox13.Size = new System.Drawing.Size(121, 21);
             this.checkBox13.TabIndex = 17;
@@ -217,7 +217,7 @@
             // checkBox14
             // 
             this.checkBox14.AutoSize = true;
-            this.checkBox14.Location = new System.Drawing.Point(139, 145);
+            this.checkBox14.Location = new System.Drawing.Point(155, 145);
             this.checkBox14.Name = "checkBox14";
             this.checkBox14.Size = new System.Drawing.Size(145, 21);
             this.checkBox14.TabIndex = 16;
@@ -227,7 +227,7 @@
             // checkBox15
             // 
             this.checkBox15.AutoSize = true;
-            this.checkBox15.Location = new System.Drawing.Point(139, 118);
+            this.checkBox15.Location = new System.Drawing.Point(155, 118);
             this.checkBox15.Name = "checkBox15";
             this.checkBox15.Size = new System.Drawing.Size(159, 21);
             this.checkBox15.TabIndex = 15;
@@ -237,7 +237,7 @@
             // checkBox16
             // 
             this.checkBox16.AutoSize = true;
-            this.checkBox16.Location = new System.Drawing.Point(139, 91);
+            this.checkBox16.Location = new System.Drawing.Point(155, 91);
             this.checkBox16.Name = "checkBox16";
             this.checkBox16.Size = new System.Drawing.Size(219, 21);
             this.checkBox16.TabIndex = 14;
@@ -247,7 +247,7 @@
             // checkBox17
             // 
             this.checkBox17.AutoSize = true;
-            this.checkBox17.Location = new System.Drawing.Point(139, 64);
+            this.checkBox17.Location = new System.Drawing.Point(155, 64);
             this.checkBox17.Name = "checkBox17";
             this.checkBox17.Size = new System.Drawing.Size(151, 21);
             this.checkBox17.TabIndex = 13;
@@ -257,7 +257,7 @@
             // checkBox18
             // 
             this.checkBox18.AutoSize = true;
-            this.checkBox18.Location = new System.Drawing.Point(139, 37);
+            this.checkBox18.Location = new System.Drawing.Point(155, 37);
             this.checkBox18.Name = "checkBox18";
             this.checkBox18.Size = new System.Drawing.Size(203, 21);
             this.checkBox18.TabIndex = 12;
@@ -286,7 +286,7 @@
             this.groupBox1.Controls.Add(this.checkBox18);
             this.groupBox1.Location = new System.Drawing.Point(12, 86);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(370, 285);
+            this.groupBox1.Size = new System.Drawing.Size(377, 285);
             this.groupBox1.TabIndex = 21;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Check attributes to include::";
