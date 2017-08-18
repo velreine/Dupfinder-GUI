@@ -439,6 +439,7 @@
             this.beginsearchbutton.TabIndex = 29;
             this.beginsearchbutton.Text = "Begin search...";
             this.beginsearchbutton.UseVisualStyleBackColor = true;
+            this.beginsearchbutton.Click += new System.EventHandler(this.beginsearchbutton_Click);
             // 
             // labelMaxFileSize
             // 
@@ -455,7 +456,7 @@
             this.textBoxMaxFileSize.Name = "textBoxMaxFileSize";
             this.textBoxMaxFileSize.Size = new System.Drawing.Size(117, 22);
             this.textBoxMaxFileSize.TabIndex = 31;
-            this.textBoxMaxFileSize.Text = "204.800";
+            this.textBoxMaxFileSize.Text = "204800";
             this.textBoxMaxFileSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Form1

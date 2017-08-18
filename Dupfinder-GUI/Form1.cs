@@ -5,8 +5,10 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFiles;
 
 namespace Dupfinder_GUI
 {
@@ -246,6 +248,99 @@ namespace Dupfinder_GUI
                 g_bATTRIBUTE_VIRTUAL = false;
             }
         }
-#endregion
+        #endregion
+
+        private void beginsearchbutton_Click(object sender, EventArgs e)
+        {
+
+            string[] FileExtensions = BuildFileExtensionList();
+            string[] Paths = BuildPathList();
+            bool fileexblacklist = radioBlacklist.Checked; // If not checked file extensions are a whitelist.
+            bool pathblacklist = radioBlacklist2.Checked; // If not checked whitelist of paths.
+            Int64 maxfilesize = Int64.Parse(textBoxMaxFileSize.Text);
+            Int64 minfilesize = Int64.Parse(textBoxMinFileSize.Text);
+            WindowsFiles.FileAccess.Flag_Attributes[] flags = BuildFlags();
+
+        }
+
+        ///<summary>Returns a Flag_Attribute array with the selected file attributes to include from the Form. (REALLY UGLY CODE!)</summary>
+        private WindowsFiles.FileAccess.Flag_Attributes[] BuildFlags()
+        {
+            WindowsFiles.FileAccess.Flag_Attributes[] tempFlags = new WindowsFiles.FileAccess.Flag_Attributes[18];
+            //^Temporary buffer to hold all possible attributes.
+
+            int length = 0;
+
+            // WOOPS SHOULD THESE CONDITIONALS BE INVERTED '!', DUE TO FileAccess class functions' ignore parameter?.
+            if (g_bATTRIBUTE_ARCHIVE) { tempFlags[length] = WindowsFiles.FileAccess.Flag_Attributes.FILE_ATTRIBUTE_ARCHIVE; length++; }
+            if (g_bATTRIBUTE_COMPRESSED) { tempFlags[length] = WindowsFiles.FileAccess.Flag_Attributes.FILE_ATTRIBUTE_COMPRESSED; length++; }
+            if (g_bATTRIBUTE_DEVICE) { tempFlags[length] = WindowsFiles.FileAccess.Flag_Attributes.FILE_ATTRIBUTE_DEVICE; length++; }
+            if (g_bATTRIBUTE_DIRECTORY) { tempFlags[length] = WindowsFiles.FileAccess.Flag_Attributes.FILE_ATTRIBUTE_DIRECTORY; length++; }
+            if (g_bATTRIBUTE_ENCRYPTED) { tempFlags[length] = WindowsFiles.FileAccess.Flag_Attributes.FILE_ATTRIBUTE_ENCRYPTED; length++; }
+            if (g_bATTRIBUTE_HIDDEN) { tempFlags[length] = WindowsFiles.FileAccess.Flag_Attributes.FILE_ATTRIBUTE_HIDDEN; length++; }
+            if (g_bATTRIBUTE_NORMAL) { tempFlags[length] = WindowsFiles.FileAccess.Flag_Attributes.FILE_ATTRIBUTE_NORMAL; length++; }
+            if (g_bATTRIBUTE_NOT_CONTENT_INDEXED) { tempFlags[length] = WindowsFiles.FileAccess.Flag_Attributes.FILE_ATTRIBUTE_NOT_CONTENT_INDEXED; length++; }
+            if (g_bATTRIBUTE_NO_SCRUB_DATA) { tempFlags[length] = WindowsFiles.FileAccess.Flag_Attributes.FILE_ATTRIBUTE_NO_SCRUB_DATA; length++; }
+            if (g_bATTRIBUTE_OFFLINE) { tempFlags[length] = WindowsFiles.FileAccess.Flag_Attributes.FILE_ATTRIBUTE_OFFLINE; length++; }
+            if (g_bATTRIBUTE_READONLY) { tempFlags[length] = WindowsFiles.FileAccess.Flag_Attributes.FILE_ATTRIBUTE_READONLY; length++; }
+            if (g_bATTRIBUTE_RECALL_ON_DATA_ACCESS) { tempFlags[length] = WindowsFiles.FileAccess.Flag_Attributes.FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS; length++; }
+            if (g_bATTRIBUTE_RECALL_ON_OPEN) { tempFlags[length] = WindowsFiles.FileAccess.Flag_Attributes.FILE_ATTRIBUTE_RECALL_ON_OPEN; length++; }
+            if (g_bATTRIBUTE_REPARSE_POINT) { tempFlags[length] = WindowsFiles.FileAccess.Flag_Attributes.FILE_ATTRIBUTE_REPARSE_POINT; length++; }
+            if (g_bATTRIBUTE_SPARSE_FILE) { tempFlags[length] = WindowsFiles.FileAccess.Flag_Attributes.FILE_ATTRIBUTE_SPARSE_FILE; length++; }
+            if (g_bATTRIBUTE_SYSTEM) { tempFlags[length] = WindowsFiles.FileAccess.Flag_Attributes.FILE_ATTRIBUTE_SYSTEM; length++; }
+            if (g_bATTRIBUTE_TEMPORARY) { tempFlags[length] = WindowsFiles.FileAccess.Flag_Attributes.FILE_ATTRIBUTE_TEMPORARY; length++; }
+            if (g_bATTRIBUTE_VIRTUAL) { tempFlags[length] = WindowsFiles.FileAccess.Flag_Attributes.FILE_ATTRIBUTE_VIRTUAL; length++; }
+
+            WindowsFiles.FileAccess.Flag_Attributes[] flags = new WindowsFiles.FileAccess.Flag_Attributes[length];
+
+            // Fill the new shorter array to return.
+            for (int i = 0; i < length; i++)
+            {
+                flags[i] = tempFlags[i];
+            }
+
+
+            
+            return flags;
+        }
+
+        private string[] BuildPathList() // Shitty method. Fix.
+        {
+            string[] pa = textBoxpaths.Text.Split('\n');
+            int length = pa.Length;
+            int c = 0;
+
+            for (int i = 0; i < length; i++)
+            {
+                if (!(pa[i] == String.Empty)) { c++; } 
+            }
+
+            string[] xpa = { "" };
+
+            if (c > 0)
+            {
+                xpa = new string[c]; for (int i = 0; i < c; i++)
+                {
+                    xpa[i] = pa[i];
+                } }
+
+            return xpa;
+        }
+
+        private string[] BuildFileExtensionList()
+        {
+            string[] fe = textBoxFileExtensions.Text.Split('+');
+            int length = fe.Length;
+
+            for (int i = 0; i < length; i++)
+            {
+                // Removes whitespaces.
+                fe[i] = fe[i].Replace(" ", String.Empty);
+            }
+
+
+            return fe;
+        }
+
     }
 }
